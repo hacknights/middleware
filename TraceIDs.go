@@ -6,10 +6,10 @@ import (
 	"github.com/google/uuid"
 )
 
-// traceIDs writes the RequestID, and possibly CorrelationID, in the Request header
+// TraceIDs writes the RequestID, and possibly CorrelationID, in the Request header
 //
 // Example:
-//   http.Handle("/", traceIDs(r))
+//   http.Handle("/", TraceIDs(r))
 func TraceIDs(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		r2 := new(http.Request)
