@@ -30,6 +30,7 @@ func AuthJWT(key interface{}) func(h http.HandlerFunc) http.HandlerFunc {
 	}
 
 	keyFunc := func(key interface{}) func(token *jwt.Token) (interface{}, error) {
+		
 		return func(token *jwt.Token) (interface{}, error) {
 			if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
 				//Only accept expected valid signing methods - specifically, don't accept None

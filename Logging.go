@@ -17,7 +17,7 @@ func Logging(next http.HandlerFunc) http.HandlerFunc {
 		defer func() {
 			elapsed := time.Since(start).String()
 			rid := r.Header["X-Request-Id"]
-			log.Printf("%s\t%3d\t%-7d\t%s\t%s", rid, l.statusCode, l.length, elapsed, r.RequestURI)
+			log.Printf("%s %3d %7d %12s %s %s", rid, l.statusCode, l.length, elapsed, r.UserAgent(), r.RequestURI)
 		}()
 		next.ServeHTTP(l, r)
 	})
